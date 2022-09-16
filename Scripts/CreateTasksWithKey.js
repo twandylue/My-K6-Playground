@@ -2,8 +2,9 @@ import http from 'k6/http';
 import { check, sleep } from 'k6';
 
 export const options = {
-  vus: 1,
-  duration: "2s"
+  vus: 10,
+  duration: "10s",
+  rps: 5,
 };
 
 const hostname = "https://nmqv3-apimin.qa.91dev.tw";
