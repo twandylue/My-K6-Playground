@@ -2,11 +2,12 @@ import http from 'k6/http';
 import { check, sleep } from 'k6';
 
 export const options = {
-  vus: 1,
-  duration: "2s"
+  vus: 10,
+  duration: "10s",
+  rps: 5,
 };
 
-const hostname = "https://nmqv3-apimin.qa.91dev.tw";
+const hostname = "https://nmqv3-stress-test-ingress.91dev.tw";
 
 export default function() {
   const url = `${hostname}/api/v1/tasks`;
@@ -20,6 +21,6 @@ export default function() {
   });
 
   check(resp, { "status = 200": resp.status === 200 })
-  // let resp = http.get("https://backoffice.qa.91dev.tw/_hc");
+  console.log(GenerateGuid());
   sleep(1);
 }
