@@ -51,29 +51,29 @@ class Profile {
 class Data {
   constructor() {
     this.Bundles = [];
-    this.Bundles.push(new Bundle(`Phone#${this.RandomPhoneNumber()}`));
+    this.Bundles.push(new Bundle(`Phone#${this.RandomIntPhoneNumber()}`));
     this.Bundles.push(new Bundle(`Email#${this.RandomEmail()}`));
-    this.Bundles.push(new Bundle(`ShopThirdParty#${this.RandomNumber()}`));
-    this.Bundles.push(new Bundle(`Google#${this.RandomNumber()}`));
-    this.Bundles.push(new Bundle(`FB#${this.RandomNumber()}`));
-    this.Bundles.push(new Bundle(`Apple#${this.RandomNumber()}`));
-    this.Bundles.push(new Bundle(`Line#${this.RandomNumber()}`));
-    this.Bundles.push(new Bundle(`MemberId#${this.RandomNumber()}`));
-    this.Bundles.push(new Bundle(`VipMemberId#${this.RandomNumber()}`));
-    this.Bundles.push(new Bundle(`CrmMemberId#${this.RandomNumber()}`));
+    this.Bundles.push(new Bundle(`ShopThirdParty#${this.RandomInt()}`));
+    this.Bundles.push(new Bundle(`Google#${this.RandomInt()}`));
+    this.Bundles.push(new Bundle(`FB#${this.RandomInt()}`));
+    this.Bundles.push(new Bundle(`Apple#${this.RandomInt()}`));
+    this.Bundles.push(new Bundle(`Line#${this.RandomInt()}`));
+    this.Bundles.push(new Bundle(`MemberId#${this.RandomInt()}`));
+    this.Bundles.push(new Bundle(`VipMemberId#${this.RandomInt()}`));
+    this.Bundles.push(new Bundle(`CrmMemberId#${this.RandomInt()}`));
     this.Profile = new Profile();
   }
 
-  RandomPhoneNumber() {
-    return "+8860" + Math.floor(Math.random() * (MAX - 1) + 1);
+  RandomIntPhoneNumber() {
+    return "+8860" + Math.floor(Math.random() * (MAX) + 1);
   }
 
-  RandomNumber() {
-    return Math.floor(Math.random() * (MAX - 1) + 1);
+  RandomInt() {
+    return Math.floor(Math.random() * (MAX) + 1);
   }
 
   RandomEmail() {
-    return this.GenerateGuid().replaceAll('-', '') + "@" + "91app.com.tw";
+    return this.GenerateGuid().replace(/-/g, '') + "@" + "91app.com.tw";
   }
 
   GenerateGuid() {
@@ -84,6 +84,5 @@ class Data {
   }
 }
 
-// console.log(new Data().RandomEmail());
 console.log(JSON.stringify(new Data()));
 
