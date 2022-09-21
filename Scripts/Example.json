@@ -1,0 +1,118 @@
+{
+  "bundles": [
+    {
+      "id": "Phone#0000000001",
+      "extensions": {
+        "ebet": "Integrated oil Companies"
+      },
+      "sourceCreatedBy": "LenChristiano",
+      "sourceCreatedAt": "1976-01-06T00:00:00+08:00"
+    },
+    {
+      "id": "Email#0000000001",
+      "extensions": {
+        "ijok": "Restaurants"
+      },
+      "sourceCreatedBy": "ElaneFosbrook",
+      "sourceCreatedAt": "1955-12-02T00:00:00+08:00"
+    },
+    {
+      "id": "ShopThirdParty#0000000001",
+      "extensions": {
+        "zrj": "Steel/Iron Ore"
+      },
+      "sourceCreatedBy": "RenettaGrizzaffi",
+      "sourceCreatedAt": "1998-10-31T00:00:00+08:00"
+    },
+    {
+      "id": "Google#0000000001",
+      "extensions": {
+        "ggee": "Specialty Foods"
+      },
+      "sourceCreatedBy": "NicholePacleb",
+      "sourceCreatedAt": "1972-06-28T00:00:00+08:00"
+    },
+    {
+      "id": "FB#0000000001",
+      "extensions": {
+        "tck": "Coal Mining"
+      },
+      "sourceCreatedBy": "VedaEtier",
+      "sourceCreatedAt": "1957-04-25T00:00:00+08:00"
+    },
+    {
+      "id": "Apple#0000000001",
+      "extensions": {
+        "dsnb": "Metal Fabrications"
+      },
+      "sourceCreatedBy": "SvetlanaShen",
+      "sourceCreatedAt": "1936-05-28T00:00:00+08:00"
+    },
+    {
+      "id": "Line#0000000001",
+      "extensions": {
+        "lrn": "Real Estate"
+      },
+      "sourceCreatedBy": "JohnnieLinker",
+      "sourceCreatedAt": "1961-02-09T00:00:00+08:00"
+    },
+    {
+      "id": "MemberId#0000000001",
+      "extensions": {
+        "xurc": "Apparel"
+      },
+      "sourceCreatedBy": "PatRoberg",
+      "sourceCreatedAt": "1963-10-06T00:00:00+08:00"
+    },
+    {
+      "id": "VipMemberId#0000000001",
+      "extensions": {
+        "uczq": "Water Supply"
+      },
+      "sourceCreatedBy": "VerdaHietala",
+      "sourceCreatedAt": "1977-11-24T00:00:00+08:00"
+    },
+    {
+      "id": "CrmMemberId#0000000001",
+      "extensions": {
+        "wrgu": "Catalog/Specialty Distribution"
+      },
+      "sourceCreatedBy": "LuraMoscovic",
+      "sourceCreatedAt": "1967-11-13T00:00:00+08:00"
+    }
+  ],
+  "profile": {
+    "name": {
+      "firstName": "Angel",
+      "lastName": "Eskew",
+      "fullName": "SabraPagliarini"
+    },
+    "gender": "Female",
+    "birthday": {
+      "year": 1982,
+      "month": 5,
+      "day": 2
+    },
+    "eComJoinDateTime": "1997-02-20T06:28:09.2912278+08:00",
+    "migrateJoinDateTime": "1971-04-22T20:10:02.78445+08:00",
+    "contactEmail": "Ahlberg.Shon3@mail2peace.com",
+    "locale": "Yugoslavia",
+    "address": {
+      "postalCode": "A1J6A7",
+      "country": "Ghana",
+      "province": "Saskatchewan",
+      "city": "Reed",
+      "district": "Vermont ",
+      "address1": "Lindsey Lane",
+      "address2": "Apt. 258"
+    },
+    "identityCardId": "-96",
+    "education": "German",
+    "annualIncome": "826333",
+    "custom1": "Custom1-100000",
+    "custom2": "Custom2-100000",
+    "custom3": "Custom3-100000",
+    "custom4": "Custom4-100000",
+    "custom5": "Custom5-100000"
+  }
+}
