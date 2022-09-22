@@ -6,23 +6,11 @@ export const options = {
   scenarios: {
     contacts: {
       executor: 'constant-arrival-rate',
-
-      // Our test should last 30 seconds in total
-      duration: '30s',
-
-      // It should start 30 iterations per `timeUnit`. Note that iterations starting points
-      // will be evenly spread across the `timeUnit` period.
-      rate: 30,
-
-      // It should start `rate` iterations per second
+      duration: `${__ENV.DURATION}`,
+      rate: `${__ENV.RATE}`,
+      preAllocatedVUs: `${__ENV.PREALLOCATEDVUS}`,
+      maxVUs: `${__ENV.MAXVUS}`,
       timeUnit: '1s',
-
-      // It should preallocate 2 VUs before starting the test
-      preAllocatedVUs: 2,
-
-      // It is allowed to spin up to 50 maximum VUs to sustain the defined
-      // constant arrival rate.
-      maxVUs: 50,
     },
   },
 };
@@ -42,7 +30,6 @@ export default function() {
   });
 
   check(resp, { "status = 200": resp.status === 200 })
-  // console.log(GenerateGuid());
   // sleep(1);
 }
 
