@@ -2,9 +2,29 @@ import http from 'k6/http';
 import { check, sleep } from 'k6';
 
 export const options = {
-  vus: 10,
-  duration: "10s",
-  rps: 5,
+  // discardResponseBodies: true,
+  scenarios: {
+    contacts: {
+      executor: 'constant-arrival-rate',
+
+      // Our test should last 30 seconds in total
+      duration: '30s',
+
+      // It should start 30 iterations per `timeUnit`. Note that iterations starting points
+      // will be evenly spread across the `timeUnit` period.
+      rate: 30,
+
+      // It should start `rate` iterations per second
+      timeUnit: '1s',
+
+      // It should preallocate 2 VUs before starting the test
+      preAllocatedVUs: 2,
+
+      // It is allowed to spin up to 50 maximum VUs to sustain the defined
+      // constant arrival rate.
+      maxVUs: 50,
+    },
+  },
 };
 
 const hostname = "https://nmqv3-stress-test-ingress.91dev.tw";
@@ -22,8 +42,8 @@ export default function() {
   });
 
   check(resp, { "status = 200": resp.status === 200 })
-  console.log(GenerateGuid());
-  sleep(1);
+  // console.log(GenerateGuid());
+  // sleep(1);
 }
 
 function GenerateGuid() {
