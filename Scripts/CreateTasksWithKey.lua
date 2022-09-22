@@ -12,6 +12,7 @@ for c in file:lines() do
   str = str .. c
   print(c);
 end
+file:close();
 local ENVs = Json.decode(str);
 
 -- e.g. k6 run --out json=todo/result_R10_D10_P10_M10.json --summary-export todo/summary_R10_D10_P10_M10.json ./CreateTasksWithKey.js --env RATE=10 --env DURATION=10 --env PREALLOCATEDVUS=10 --env MAXVUS=10
