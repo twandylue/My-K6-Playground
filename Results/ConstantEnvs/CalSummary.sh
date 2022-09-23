@@ -14,6 +14,15 @@ function CalAvg(){
   for fileName in *summary*; do
     [ -e "${fileName}" ] || continue
 
+    fails=$(cat $fileName | jq '.metrics.checks.fails')
+    # echo "Condition: ${fileName}, Fails Req: ${fails}"
+    # NOTE: failed cases would not be included into results
+    if [[ "${fails}" != "0" ]]; then
+        echo "Fail Condition: ${fileName}, Fails Req: ${fails}"
+        continue
+    fi
+    passes=$(cat $fileName | jq '.metrics.checks.passes')
+
     count=$((count+1))
     p90=$(cat $fileName | jq '.metrics.http_req_duration."p(90)"')
     sumP90=$((${p90%\.*}+sumP90))
