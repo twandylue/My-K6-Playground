@@ -29,7 +29,7 @@ local function GetCMD(v, i)
   local summaryReportName = path .. "/" .. i .. "_summary_" .. POD .. "Pods" ..
       "_R" .. v["RATE"] .. "_D" .. v["DURATION"] .. "_P" .. v["PREALLOCATEDVUS"] .. "_M" .. v["MAXVUS"] .. ".json";
   return "k6 run" ..
-      " --out json=" .. outputFileName ..
+      -- " --out json=" .. outputFileName ..
       " --summary-export " .. summaryReportName ..
       " ./CreateTasksWithKey.js" ..
       " --env RATE=" .. v["RATE"] ..
@@ -42,6 +42,7 @@ end
 
 for key, value in ipairs(ENVs) do
   for i = 1, 10, 1 do
+    print("Times: " .. i)
     local cmd = GetCMD(value, i);
     print(cmd)
     -- os.execute(cmd)
