@@ -1,6 +1,36 @@
 [
   {
-    "RATE": 3000,
+    "RATE": 1,
+    "DURATION": "30s",
+    "PREALLOCATEDVUS": 3000,
+    "MAXVUS": 3000
+  },
+  {
+    "RATE": 2,
+    "DURATION": "30s",
+    "PREALLOCATEDVUS": 3000,
+    "MAXVUS": 3000
+  },
+  {
+    "RATE": 8,
+    "DURATION": "30s",
+    "PREALLOCATEDVUS": 3000,
+    "MAXVUS": 3000
+  },
+  {
+    "RATE": 32,
+    "DURATION": "30s",
+    "PREALLOCATEDVUS": 3000,
+    "MAXVUS": 3000
+  },
+  {
+    "RATE": 64,
+    "DURATION": "30s",
+    "PREALLOCATEDVUS": 3000,
+    "MAXVUS": 3000
+  },
+  {
+    "RATE": 128,
     "DURATION": "30s",
     "PREALLOCATEDVUS": 3000,
     "MAXVUS": 3000
