@@ -21,9 +21,9 @@ end
 file:close();
 local ENVs = Json.decode(str);
 
--- e.g. k6 run --out json=../Results/ConstantPods/CreateTasksWithKey_10Pods/10_result_10Pods_R3000_D30s_P3000_M3000.json --summary-export ../Results/CreateTasksWithKey_10Pods/10_summary_10Pods_R3000 _D30s_P3000_M3000.json ./CreateTasksWithKey.js --env RATE=3000 --env DURATION=30s --env PREALLOCATEDVUS=3000 --env MAXVUS=3000
+-- e.g. k6 run --summary-export ../../Results/CreateTasksWithKey_10Pods/10_summary_10Pods_R3000 _D30s_P3000_M3000.json ./CreateTasksWithKey.js --env RATE=3000 --env DURATION=30s --env PREALLOCATEDVUS=3000 --env MAXVUS=3000
 local function GetCMD(v, i)
-  local path = "../Results/ConstantPods/CreateTasksWithKey_" .. POD .. "Pods";
+  local path = "../../Results/ConstantPods/CreateTasksWithKey_" .. POD .. "Pods";
   local outputFileName = path .. "/" .. i .. "_result_" .. POD .. "Pods" ..
       "_R" .. v["RATE"] .. "_D" .. v["DURATION"] .. "_P" .. v["PREALLOCATEDVUS"] .. "_M" .. v["MAXVUS"] .. ".json";
   local summaryReportName = path .. "/" .. i .. "_summary_" .. POD .. "Pods" ..

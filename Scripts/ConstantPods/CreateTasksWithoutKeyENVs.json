@@ -28,11 +28,5 @@
     "DURATION": "30s",
     "PREALLOCATEDVUS": 3000,
     "MAXVUS": 3000
-  },
-  {
-    "RATE": 128,
-    "DURATION": "30s",
-    "PREALLOCATEDVUS": 3000,
-    "MAXVUS": 3000
   }
 ]

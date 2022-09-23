@@ -6,7 +6,7 @@ declare -a pods
 # directory name
 dirs=("CreateTasksWitheKey_1Pods")
 # pods number
-pods=(1 2 8 32 64 128)
+pods=(1 2 8 32 64)
 
 function CalAvg(){
   for podNumber in ${pods[@]}; do
