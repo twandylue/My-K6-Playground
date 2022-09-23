@@ -41,7 +41,7 @@ end
 -- os.execute("ulimit -n 655350")
 
 for key, value in ipairs(ENVs) do
-  for i = 1, 10, 1 do
+  for i = 1, 30, 1 do
     print("Times: " .. i)
     local cmd = GetCMD(value, i);
     print(cmd)
