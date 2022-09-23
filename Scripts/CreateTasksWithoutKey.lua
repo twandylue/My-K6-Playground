@@ -1,5 +1,5 @@
 local Json = require "json";
-print("2022_1111_Stress_Tests_In_K6: CreateTasksWithKey");
+print("2022_1111_Stress_Tests_In_K6: CreateTasksWithoutKey");
 
 POD = arg[1]
 if not (tonumber(POD)) then
@@ -8,9 +8,9 @@ if not (tonumber(POD)) then
 end
 
 local str = "";
-local file = io.open("./CreateTasksWithKeyENVs.json", "r");
+local file = io.open("./CreateTasksWithoutKeyENVs.json", "r");
 if not file then
-  print("File: CreateTasksWithKeyENVs.json is not found")
+  print("File: CreateTasksWithoutKeyENVs.json is not found")
   return
 end
 
@@ -21,9 +21,9 @@ end
 file:close();
 local ENVs = Json.decode(str);
 
--- e.g. k6 run --out json=../Results/CreateTasksWithKey_10Pods/10_result_10Pods_R3000_D30s_P3000_M3000.json --summary-export ../Results/CreateTasksWithKey_10Pods/10_summary_10Pods_R3000 _D30s_P3000_M3000.json ./CreateTasksWithKey.js --env RATE=3000 --env DURATION=30s --env PREALLOCATEDVUS=3000 --env MAXVUS=3000
+-- e.g. k6 run --out json=../Results/CreateTasksWithoutKey_10Pods/10_result_10Pods_R3000_D30s_P3000_M3000.json --summary-export ../Results/CreateTasksWithoutKey_10Pods/10_summary_10Pods _R3000_D30s_P3000_M3000.json ./CreateTasksWithoutKey.js --env RATE=3000 --env DURATION=30s --env PREALLOCATEDVUS=3000 --env MAXVUS=3000
 local function GetCMD(v, i)
-  local path = "../Results/CreateTasksWithKey_" .. POD .. "Pods";
+  local path = "../Results/CreateTasksWithoutKey_" .. POD .. "Pods";
   local outputFileName = path .. "/" .. i .. "_result_" .. POD .. "Pods" ..
       "_R" .. v["RATE"] .. "_D" .. v["DURATION"] .. "_P" .. v["PREALLOCATEDVUS"] .. "_M" .. v["MAXVUS"] .. ".json";
   local summaryReportName = path .. "/" .. i .. "_summary_" .. POD .. "Pods" ..
@@ -31,7 +31,7 @@ local function GetCMD(v, i)
   return "k6 run" ..
       " --out json=" .. outputFileName ..
       " --summary-export " .. summaryReportName ..
-      " ./CreateTasksWithKey.js" ..
+      " ./CreateTasksWithoutKey.js" ..
       " --env RATE=" .. v["RATE"] ..
       " --env DURATION=" .. v["DURATION"] ..
       " --env PREALLOCATEDVUS=" .. v["PREALLOCATEDVUS"] ..

@@ -2,9 +2,17 @@ import http from 'k6/http';
 import { check, sleep } from 'k6';
 
 export const options = {
-  vus: 10,
-  duration: "10s",
-  rps: 5,
+  // discardResponseBodies: true,
+  scenarios: {
+    contacts: {
+      executor: 'constant-arrival-rate',
+      duration: `${__ENV.DURATION}`,
+      rate: `${__ENV.RATE}`,
+      preAllocatedVUs: `${__ENV.PREALLOCATEDVUS}`,
+      maxVUs: `${__ENV.MAXVUS}`,
+      timeUnit: '1s',
+    },
+  },
 };
 
 const hostname = "https://nmqv3-stress-test-ingress.91dev.tw";
@@ -21,6 +29,5 @@ export default function() {
   });
 
   check(resp, { "status = 200": resp.status === 200 })
-  console.log(GenerateGuid());
-  sleep(1);
+  // sleep(1);
 }
