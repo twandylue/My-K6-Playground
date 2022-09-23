@@ -1,3 +1,0 @@
-AvgRate: 19
-AvgP90: 67
-AvgP95: 139

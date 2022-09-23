@@ -3,7 +3,7 @@
 
 declare -a dirs
 # directory name
-dirs=("CreateTasksWithKey" "CreateTasksWithKey2")
+dirs=("CreateTasksWithKey_10Pods")
 
 function CalAvg(){
   count=0
