@@ -7,7 +7,7 @@ Rates=(1 2 8 32 64)
 
 function CalAvg(){
   for rateNumber in ${Rates[@]}; do
-    echo "================Pods:${rateNumber}================"
+    echo "================Rate:${rateNumber}================"
 
     count=0
     sumP90=0
