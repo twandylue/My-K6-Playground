@@ -1,10 +1,7 @@
 # /usr/bin
 # set -x
 
-declare -a dirs
 declare -a pods
-# directory name
-dirs=("CreateTasksWitheKey_1Pods")
 # pods number
 pods=(1 2 8 32 64)
 
@@ -68,6 +65,18 @@ function CalAvg(){
   done
 }
 
+if [[ $1 == "all" ]]; then
+  for dir in */; do
+    cd $(echo $dir)
+    CalAvg
+    cd -
+  done
+  exit 0
+fi
+
+declare -a dirs
+# directory name
+dirs=("CreateTasksWithKey_1Pods")
 for dir in ${dirs[@]}; do
   cd $(echo $dir)
   CalAvg

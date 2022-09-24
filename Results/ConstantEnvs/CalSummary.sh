@@ -1,10 +1,6 @@
 # /usr/bin
 # set -x
 
-declare -a dirs
-# directory name
-dirs=("CreateTasksWithKey_10Pods")
-
 function CalAvg(){
   count=0
   sumP90=0
@@ -60,6 +56,18 @@ function CalAvg(){
   echo "AvgP95: $avgP95" >> Summary.txt
 }
 
+if [[ $1 == "all" ]]; then
+  for dir in */; do
+    cd $(echo $dir)
+    CalAvg
+    cd -
+  done
+  exit 0
+fi
+
+declare -a dirs
+# directory name
+dirs=("CreateTasksWithKey_10Pods")
 for dir in ${dirs[@]}; do
   cd $(echo $dir)
   CalAvg
