@@ -1,20 +1,20 @@
 # /usr/bin
 # set -x
 
-declare -a pods
-# pods number
-pods=(1 2 8 32 64)
+declare -a Rates
+# Rates number
+Rates=(1 2 8 32 64)
 
 function CalAvg(){
-  for podNumber in ${pods[@]}; do
-    echo "================Pods:${podNumber}================"
+  for rateNumber in ${Rates[@]}; do
+    echo "================Pods:${rateNumber}================"
 
     count=0
     sumP90=0
     sumP95=0
     sumRate=0
 
-    for fileName in *"s_R${podNumber}_"*; do
+    for fileName in *"s_R${rateNumber}_"*; do
       [ -e "${fileName}" ] || continue
 
       fails=$(cat $fileName | jq '.metrics.checks.fails')
@@ -54,14 +54,14 @@ function CalAvg(){
     echo "AvgP95:"
     echo $avgP95
 
-    summary="Summary_R${podNumber}.txt"
+    summary="Summary_R${rateNumber}.txt"
     if [[ -f "$summary" ]]; then
       rm $summary
     fi
 
-    echo "AvgRate: $avgRate" >> Summary_R${podNumber}.txt
-    echo "AvgP90: $avgP90" >> Summary_R${podNumber}.txt
-    echo "AvgP95: $avgP95" >> Summary_R${podNumber}.txt
+    echo "AvgRate: $avgRate" >> Summary_R${rateNumber}.txt
+    echo "AvgP90: $avgP90" >> Summary_R${rateNumber}.txt
+    echo "AvgP95: $avgP95" >> Summary_R${rateNumber}.txt
   done
 }
 
