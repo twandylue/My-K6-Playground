@@ -68,7 +68,7 @@ else
 fi
 
 for dir in ${dirs[@]}; do
-  # using command inorder to get the exit code
+  # using command in order to get the exit code
   command cd $(echo $dir)
   if [[ $? == "1" ]]; then
     # echo "Directory: $dir does not exist."
