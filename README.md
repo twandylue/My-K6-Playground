@@ -123,7 +123,7 @@ Summary.txt
 
 ### ConstantPods
 
-Similar with the content above in ConstantEnvs. Except the results will be written into different files baed on Rate.  
+Similar to the content above in ConstantEnvs. Except the results will be written into different files baed on Rate.  
 
 #### Calculation rule
 
