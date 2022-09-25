@@ -1,4 +1,7 @@
 #!/bin/bash
+# echo $BASH_VERSION
+
+echo "test"
 
 declare -a rateArray
 function FindRateArray(){
