@@ -86,7 +86,7 @@ then
     dirs+=($dir)
   done
 else
-  dirs=("CreateTasksWithKey_1Pods" "CreateTasksWithKey_100Pods")
+  dirs=("CreateTasksWithKey_1Pods")
 fi
 
 for dir in ${dirs[*]}; do

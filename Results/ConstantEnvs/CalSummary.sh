@@ -56,20 +56,24 @@ function CalAvg(){
   echo "AvgP95: $avgP95" >> Summary.txt
 }
 
-if [[ $1 == "all" ]]; then
-  for dir in */; do
-    cd $(echo $dir)
-    CalAvg
-    cd -
-  done
-  exit 0
-fi
-
 declare -a dirs
 # directory name
-dirs=("CreateTasksWithKey_10Pods")
+if [[ $1 == "all" ]]; 
+then
+  for dir in */; do
+    dirs+=($dir)
+  done
+else
+  dirs=("CreateTasksWithKey_10Pods")
+fi
+
 for dir in ${dirs[@]}; do
-  cd $(echo $dir)
+  # using command inorder to get the exit code
+  command cd $(echo $dir)
+  if [[ $? == "1" ]]; then
+    # echo "Directory: $dir does not exist."
+    exit 1
+  fi
   CalAvg
   cd -
 done
