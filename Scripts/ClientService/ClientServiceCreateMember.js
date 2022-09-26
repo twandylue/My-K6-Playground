@@ -21,10 +21,8 @@ const baseUrl = "https://memberservice-api-internal.qa.91dev.tw";
 export default function() {
   const url = `${baseUrl}/api/members`;
 
-  // const payload = {
-  //   "jobName": "Heartbeat",
-  //   "idempotencyKey": GenerateGuid(),
-  // }
+  let data = new Data();
+  // if (data.UniqueInt() > 100) exec.test.abort();
 
   let resp = http.post(url, JSON.stringify(new Data()), {
     headers: {
@@ -93,7 +91,7 @@ class Profile {
 class Data {
   constructor() {
     this.Bundles = [];
-    this.Bundles.push(new Bundle(`Phone#${this.RandomIntPhoneNumber()}`));
+    this.Bundles.push(new Bundle(`Phone#${this.RandomPhoneNumber()}`));
     this.Bundles.push(new Bundle(`Email#${this.RandomEmail()}`));
     this.Bundles.push(new Bundle(`ShopThirdParty#${this.RandomInt()}`));
     this.Bundles.push(new Bundle(`Google#${this.RandomInt()}`));
@@ -106,8 +104,12 @@ class Data {
     this.Profile = new Profile();
   }
 
-  RandomIntPhoneNumber() {
-    return "+8860" + exec.scenario.iterationInTest;
+  RandomPhoneNumber() {
+    return "+8860" + this.UniqueInt();
+  }
+
+  UniqueInt() {
+    return exec.scenario.iterationInTest;
   }
 
   RandomInt() {
