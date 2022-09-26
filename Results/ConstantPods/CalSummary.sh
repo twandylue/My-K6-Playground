@@ -68,6 +68,22 @@ function FindMaxVusArray(){
 }
 
 function CalAvg(){
+
+  # for durationTime in ${durationArray[*]}; do
+  #   for rateNumber in ${rateArray[*]}; do
+  #     for preAllocatedNumber in ${preAllocatedArray[*]}; do
+  #       for maxVusNumber in ${maxVusArray[*]}; do
+  #         echo "**********"
+  #         echo "$durationTime"
+  #         echo "$rateNumber"
+  #         echo "$preAllocatedNumber"
+  #         echo "$maxVusNumber"
+  #         echo "**********"
+  #       done
+  #     done
+  #   done
+  # done
+
   for rateNumber in ${rateArray[*]}; do
     echo "================Rate:${rateNumber}================"
     count=0
@@ -145,6 +161,30 @@ for dir in ${dirs[*]}; do
     exit 1
   fi
   FindRateArray
-  CalAvg
+  FindDurationArray
+  FindPreAllocatedArray
+  FindMaxVusArray
+
+  # echo "------"
+  # echo ${rateArray[*]}
+  # echo ${durationArray[*]}
+  # echo ${preAllocatedArray[*]}
+  # echo ${maxVusArray[*]}
+  # echo "------"
+
+  for durationTime in ${durationArray[*]}; do
+    for rateNumber in ${rateArray[*]}; do
+      for preAllocatedNumber in ${preAllocatedArray[*]}; do
+        for maxVusNumber in ${maxVusArray[*]}; do
+          echo "**********"
+          echo "[0-9]_summary_[0-9]*Pods_R${rateNumber}_D${durationTime}s_P${preAllocatedNumber}_M${maxVusNumber}"
+          echo "**********"
+          # TODO: 
+        done
+      done
+    done
+  done
+
+  # CalAvg
   cd -
 done
