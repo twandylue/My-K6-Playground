@@ -28,7 +28,7 @@ Execute stress tests according to `CreateTasksWithKey.js` script in K6.
 
 ```console
 $ cd ./Scripts/ConstantEnvs
-$ lua StartTestsInConstantEnvs CreateTasksWithKey.js 1
+$ lua StartTestsInConstantEnvs.lua CreateTasksWithKey.js 1
 ```
 
 1. First argument: File name of the script (e.g. `CreateTasksWithKey.js`)
