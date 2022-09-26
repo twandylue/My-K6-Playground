@@ -1,0 +1,8 @@
+[
+  {
+    "RATE": 30,
+    "DURATION": "30s",
+    "PREALLOCATEDVUS": 3000,
+    "MAXVUS": 3000
+  }
+]

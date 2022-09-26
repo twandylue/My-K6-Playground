@@ -1,13 +1,22 @@
 import http from 'k6/http';
 import { check, sleep } from 'k6';
+import exec from 'k6/execution';
 
 export const options = {
-  vus: 10,
-  duration: "10s",
-  rps: 5,
+  // discardResponseBodies: true,
+  scenarios: {
+    contacts: {
+      executor: 'constant-arrival-rate',
+      duration: "10s",
+      rate: 30,
+      preAllocatedVUs: 30,
+      maxVUs: 50,
+      timeUnit: '1s',
+    },
+  },
 };
 
-const baseUrl = "memberservice-api-internal.qa.91dev.tw";
+const baseUrl = "https://memberservice-api-internal.qa.91dev.tw";
 
 export default function() {
   const url = `${baseUrl}/api/members`;
@@ -98,7 +107,7 @@ class Data {
   }
 
   RandomIntPhoneNumber() {
-    return "+8860" + Math.floor(Math.random() * (MAX) + 1);
+    return "+8860" + exec.scenario.iterationInTest;
   }
 
   RandomInt() {
