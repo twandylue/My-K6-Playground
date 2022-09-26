@@ -19,6 +19,54 @@ function FindRateArray(){
   done
 }
 
+declare -a durationArray
+function FindDurationArray(){
+  for fileName in *_summary_[0-9]Pods_R[0-9]*_D[0-9]*; do
+    [ -e "${fileName}" ] || continue
+    durationTime=$(echo ${fileName} | grep -o "D\d*" | grep -o "\d*") 
+    if [[ $durationTime == "" ]]; then
+      continue
+    fi
+
+    if [[ $(echo ${durationArray[*]} | grep -o "$durationTime" ) != "" ]]; then
+      continue
+    fi
+    durationArray+=($durationTime)
+  done
+}
+
+declare -a preAllocatedArray
+function FindPreAllocatedArray(){
+  for fileName in *_summary_[0-9]Pods_R[0-9]*_D[0-9]*s_P[0-9]*; do
+    [ -e "${fileName}" ] || continue
+    preAllocatedNumber=$(echo ${fileName} | grep -o "P\d*" | grep -o "\d*") 
+    if [[ $preAllocatedNumber == "" ]]; then
+      continue
+    fi
+
+    if [[ $(echo ${preAllocatedArray[*]} | grep -o "$preAllocatedNumber" ) != "" ]]; then
+      continue
+    fi
+    preAllocatedArray+=($preAllocatedNumber)
+  done
+}
+
+declare -a maxVusArray
+function FindMaxVusArray(){
+  for fileName in *_summary_[0-9]Pods_R[0-9]*_D[0-9]*s_P[0-9]*_M[0-9]*; do
+    [ -e "${fileName}" ] || continue
+    maxVusNumber=$(echo ${fileName} | grep -o "M\d*" | grep -o "\d*") 
+    if [[ $maxVusNumber == "" ]]; then
+      continue
+    fi
+
+    if [[ $(echo ${maxVusArray[*]} | grep -o "$maxVusNumber" ) != "" ]]; then
+      continue
+    fi
+    maxVusArray+=($maxVusNumber)
+  done
+}
+
 function CalAvg(){
   for rateNumber in ${rateArray[*]}; do
     echo "================Rate:${rateNumber}================"
