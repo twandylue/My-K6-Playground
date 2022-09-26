@@ -129,14 +129,14 @@ function CalAvg(){
           echo "AvgP95:"
           echo $avgP95
 
-          summary="Summary_R${rateNumber}.txt"
-          if [[ -f "$summary" ]]; then
-            rm $summary
+          outputFileName="$(echo ${fileName} | sed 's/[0-9]*_//1' | sed 's/.json//1').txt"
+          if [[ -f "${outputFileName}" ]]; then
+            rm ${outputFileName}
           fi
 
-          echo "AvgRate: $avgRate" >> Summary_R${rateNumber}.txt
-          echo "AvgP90: $avgP90" >> Summary_R${rateNumber}.txt
-          echo "AvgP95: $avgP95" >> Summary_R${rateNumber}.txt
+          echo "AvgRate: $avgRate" >> ${outputFileName}
+          echo "AvgP90: $avgP90" >> ${outputFileName}
+          echo "AvgP95: $avgP95" >> ${outputFileName}
         done
       done
     done
