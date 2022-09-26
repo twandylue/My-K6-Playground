@@ -6,13 +6,21 @@ My playground in K6
 
 1. Lua(version >= 5.4)
   - Version >= 5.4
-  - Json Library: [ lua-json ](https://luarocks.org/modules/neoxic/lua-json)
+  - Json Library: lua-json 
+    - [ luarocks ](https://luarocks.org/modules/neoxic/lua-json)
+    - [ apt ](https://zoomadmin.com/HowToInstall/UbuntuPackage/lua-json)
 
 2. [ K6 ](https://github.com/grafana/k6)
   - Version >= 0.4
 
 3. Bash
   - Version >= 4.0
+
+4. ulimit(in UNIX or Linux)
+
+```console
+$ ulimit -n 655350
+```
 
 # Quick Start
 
