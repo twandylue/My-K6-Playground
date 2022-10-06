@@ -47,6 +47,7 @@ local ENVs = Json.decode(str)
 -- e.g. k6 run --summary-export ../../Results/ConstantEnvs/CreateTasksWithKey_10Pods/10_summary_10Pods_R3000 _D30s_P3000_M3000.json ./CreateTasksWithKey.js --env RATE=3000 --env DURATION=30s --env PREALLOCATEDVUS=3000 --env MAXVUS=3000
 local function GetCMD(v, i)
   local path = string.format("../../Results/ConstantEnvs/%s_%dPods", RAWSCRIPTFILENAME, POD)
+
   local outputFileName = string.format(
     "%s/%d_result_%dPods_R%d_D%s_P%d_M%d.json",
     path,
