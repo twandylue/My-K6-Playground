@@ -1,4 +1,5 @@
-#!/bin/bash
+#! /bin/bash
+# set -x
 
 declare -a rateArray
 function FindRateArray(){
