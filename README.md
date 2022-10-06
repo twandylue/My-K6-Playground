@@ -4,19 +4,21 @@ My playground in K6
 
 # Prerequisite
 
-1. Lua(version >= 5.4)
+1. Only run in UNIX or Linux
+
+2. Lua
   - Version >= 5.4
-  - Json Library: lua-json 
+  - Json Library: `lua-json` 
     - [ luarocks ](https://luarocks.org/modules/neoxic/lua-json)
     - [ apt ](https://zoomadmin.com/HowToInstall/UbuntuPackage/lua-json)
 
-2. [ K6 ](https://github.com/grafana/k6)
+3. [ K6 ](https://github.com/grafana/k6)
   - Version >= 0.4
 
-3. Bash
+4. Bash
   - Version >= 4.0
 
-4. ulimit(in UNIX or Linux)
+5. ulimit (in UNIX or Linux)
 
 ```console
 $ ulimit -n 655350
