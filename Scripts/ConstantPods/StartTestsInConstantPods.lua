@@ -89,7 +89,7 @@ for _, value in ipairs(ENVs) do
   for i = 1, 2, 1 do
     print("Times: " .. i)
     local cmd = GetCMD(value, i)
-    print(cmd)
-    -- os.execute(cmd)
+    -- print(cmd)
+    os.execute(cmd)
   end
 end
