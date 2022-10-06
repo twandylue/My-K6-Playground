@@ -15,7 +15,7 @@ export const options = {
   },
 };
 
-const hostname = "https://nmqv3-stress-test-ingress.91dev.tw";
+const hostname = "https://nmqv3-apimin.qa.91dev.tw";
 
 export default function() {
   const url = `${hostname}/api/v1/tasks`;
