@@ -136,7 +136,7 @@ Summary.txt
 
 Similar to the content above in [ConstantEnvs](#constantenvs). Except that the results will be written into different files named `[\w]*_[\d]*Pods`.
 
-#### Calculation rule
+### Calculation rule
 
 ```plaintext
 AvgRate = Sum(Rate of each file) / Total number of files in the same directory (Total interation number)
