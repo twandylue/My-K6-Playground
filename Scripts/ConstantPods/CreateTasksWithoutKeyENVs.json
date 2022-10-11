@@ -1,32 +1,38 @@
 [
   {
     "RATE": 1,
-    "DURATION": "30s",
-    "PREALLOCATEDVUS": 3000,
-    "MAXVUS": 3000
+    "DURATION": "300s",
+    "PREALLOCATEDVUS": 200,
+    "MAXVUS": 300
   },
   {
     "RATE": 2,
-    "DURATION": "30s",
-    "PREALLOCATEDVUS": 3000,
-    "MAXVUS": 3000
+    "DURATION": "300s",
+    "PREALLOCATEDVUS": 200,
+    "MAXVUS": 300
   },
   {
     "RATE": 8,
-    "DURATION": "30s",
-    "PREALLOCATEDVUS": 3000,
-    "MAXVUS": 3000
+    "DURATION": "300s",
+    "PREALLOCATEDVUS": 200,
+    "MAXVUS": 300
   },
   {
     "RATE": 32,
-    "DURATION": "30s",
-    "PREALLOCATEDVUS": 3000,
-    "MAXVUS": 3000
+    "DURATION": "300s",
+    "PREALLOCATEDVUS": 200,
+    "MAXVUS": 300
   },
   {
     "RATE": 64,
-    "DURATION": "30s",
-    "PREALLOCATEDVUS": 3000,
-    "MAXVUS": 3000
+    "DURATION": "300s",
+    "PREALLOCATEDVUS": 200,
+    "MAXVUS": 300
+  },
+  {
+    "RATE": 128,
+    "DURATION": "300s",
+    "PREALLOCATEDVUS": 200,
+    "MAXVUS": 300
   }
 ]
