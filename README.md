@@ -4,7 +4,7 @@ My playground in K6
 
 ## Prerequisite
 
-1. Only run in UNIX or Linux
+1. (**Warning**) Only run in UNIX or Linux
 
 2. Lua
   - Version >= 5.4
