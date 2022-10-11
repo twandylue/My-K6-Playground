@@ -2,17 +2,17 @@
 
 My playground in K6
 
-# Prerequisite
+## Prerequisite
 
 1. Only run in UNIX or Linux
 
 2. Lua
   - Version >= 5.4
-  - Json Library: `lua-json` 
-    - [ luarocks ](https://luarocks.org/modules/neoxic/lua-json)
-    - [ apt ](https://zoomadmin.com/HowToInstall/UbuntuPackage/lua-json)
+  - Json Library: `lua-json`
+    - [luarocks](https://luarocks.org/modules/neoxic/lua-json)
+    - [apt](https://zoomadmin.com/HowToInstall/UbuntuPackage/lua-json)
 
-3. [ K6 ](https://github.com/grafana/k6)
+3. [K6](https://github.com/grafana/k6)
   - Version >= 0.4
 
 4. Bash
@@ -21,16 +21,16 @@ My playground in K6
 5. ulimit (in UNIX or Linux)
 
 ```console
-$ ulimit -n 655350
+ulimit -n 655350
 ```
 
-# Quick Start
+## Quick Start
 
 Execute stress tests according to `CreateTasksWithKey.js` script in K6.
 
 ```console
-$ cd ./Scripts/ConstantEnvs
-$ lua StartTestsInConstantEnvs.lua CreateTasksWithKey.js 1
+cd ./Scripts/ConstantEnvs
+lua StartTestsInConstantEnvs.lua CreateTasksWithKey.js 1
 ```
 
 1. First argument: File name of the script (e.g. `CreateTasksWithKey.js`)
@@ -39,7 +39,7 @@ $ lua StartTestsInConstantEnvs.lua CreateTasksWithKey.js 1
 Then, results of stress tests will be automatically generated in `./Results/ConstantEnvs/CreateTasksWithKey_1Pods`
 
 ```console
-$ cd ./Results/ConstantEnvs/CreateTasksWithKey_1Pods
+cd ./Results/ConstantEnvs/CreateTasksWithKey_1Pods
 $ ls
 1_summary_1Pods_R30_D30s_P20_M30.json
 2_summary_1Pods_R30_D30s_P20_M30.json
@@ -47,7 +47,7 @@ $ ls
 ...
 ```
 
-#### File Name Explaination
+### File Name Explaination
 
 File name: `[A]_summary_[B]Pods_[R]30_[D]30s_[P]20_[M]30`
 
@@ -62,19 +62,20 @@ File name: `[A]_summary_[B]Pods_[R]30_[D]30s_[P]20_[M]30`
 
 ### ConstantEnvs
 
-To Calculate the average of Rate(RPS), P90 of API Lantency(ms) and P95 API Lantency(ms) of in the specific directory, you have to set up directory list first. 
+To Calculate the average of Rate(RPS), P90 of API Lantency(ms) and P95 API Lantency(ms) in the specific directory, you have to set up directory list first.
 
 e.g. Directory list in `CalSummary.sh`
+
 ```bash
-...
+# snip...
 dirs=("CreateTasksWithKey_10Pods") # line 67
-...
+# snip...
 ```
 
 After that
 
 ```console
-$ cd ./Results/ConstantEnvs
+cd ./Results/ConstantEnvs
 $ bash CalSummary.sh
 -----
 AvgRate:
@@ -90,15 +91,15 @@ AvgP95:
 Those results will be written into a file named `CalSummary.txt` in `./Results/ConstantEnvs/*Pods/`
 
 ```console
-$ cd ./Results/ConstantEnvs/CreateTasksWithKey_1Pods
+cd ./Results/ConstantEnvs/CreateTasksWithKey_1Pods
 $ find Summary.txt
 Summary.txt
 ```
 
-To Calculate the average of Rate(RPS), P90 of API Lantency(ms) and P95 API Lantency(ms) of all directories, you have to set up `all` as an argument of `CalSummary.sh`.
+To Calculate the average of Rate(RPS), P90 of API Lantency(ms) and P95 API Lantency(ms) including all directories, you have to set up `all` as an argument of `CalSummary.sh`.
 
 ```console
-$ cd ./Results/ConstantEnvs
+cd ./Results/ConstantEnvs
 $ bash CalSummary.sh all
 -----
 AvgRate:
@@ -123,23 +124,24 @@ AvgP95:
 Those results will be written into the files named `CalSummary.txt` in different directories.
 
 ```console
-$ cd ./Results/ConstantEnvs/CreateTasksWithKey_1Pods
+cd ./Results/ConstantEnvs/CreateTasksWithKey_1Pods
 $ find Summary.txt
 Summary.txt
-$ cd ./Results/ConstantEnvs/CreateTasksWithKey_10Pods
+cd ./Results/ConstantEnvs/CreateTasksWithKey_10Pods
 $ find Summary.txt
 Summary.txt
 ```
 
 ### ConstantPods
 
-Similar to the content above in ConstantEnvs. Except the results will be written into different files baed on Rate.  
+Similar to the content above in [ConstantEnvs](#constantenvs). Except that the results will be written into different files named `[\w]*_[\d]*Pods`.
 
 #### Calculation rule
 
-```
+```plaintext
 AvgRate = Sum(Rate of each file) / Total number of files in the same directory (Total interation number)
+
 AvgP90 = Sum(P90 of each file) / Total number of files in the same directory (Total interation number)
+
 AvgP95 = Sum(P95 of each file) / Total number of files in the same directory (Total interation number)
 ```
-
