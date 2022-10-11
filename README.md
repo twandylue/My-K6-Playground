@@ -134,7 +134,7 @@ Summary.txt
 
 ### ConstantPods
 
-Similar to the content above in [ConstantEnvs](#constantenvs). Except that the results will be written into different files named `[\w]*_[\d]*Pods`.
+Similar to the content in [ConstantEnvs](#constantenvs). Except that the results will be written into different files named `summary_[\d]*Pods_R[\d]*_D[\d]*s_P[\d]*_M[\d]*.txt`.
 
 ### Calculation rules
 
