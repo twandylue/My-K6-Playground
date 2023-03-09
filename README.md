@@ -24,11 +24,14 @@ ulimit -n 655350
 
 ## Quick Start
 
+Prepare `CreateTasksWithKeyENVs.json` as config for `CreateTasksWithKey.js`.
+
 Execute stress tests according to `CreateTasksWithKey.js` script in K6.
 
 ```console
 cd ./Scripts/ConstantEnvs
 $ lua StartTestsInConstantEnvs.lua CreateTasksWithKey.js 1
+...
 ```
 
 1. First argument: File name of the script (e.g. `CreateTasksWithKey.js`)
@@ -65,11 +68,11 @@ To Calculate the average of Rate(RPS), P90 of API Lantency(ms) and P95 API Lante
 e.g. Directory list in `CalSummary.sh`
 
 ```bash
-snip...
+(snip...)
 
 dirs=("CreateTasksWithKey_10Pods") # line 67
 
-snip...
+(snip...)
 ```
 
 After that
@@ -127,6 +130,7 @@ Those results will be written into the files named `CalSummary.txt` in different
 cd ./Results/ConstantEnvs/CreateTasksWithKey_1Pods
 $ find Summary.txt
 Summary.txt
+
 cd ./Results/ConstantEnvs/CreateTasksWithKey_10Pods
 $ find Summary.txt
 Summary.txt
