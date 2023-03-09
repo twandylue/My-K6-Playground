@@ -12,6 +12,7 @@ My playground in K6
     - [apt](https://zoomadmin.com/HowToInstall/UbuntuPackage/lua-json)
 
 - [K6](https://github.com/grafana/k6) (>= 0.4)
+  -[Installation](https://k6.io/docs/get-started/installation/)
 
 - Bash (>= 4.0)
 
