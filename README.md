@@ -4,21 +4,19 @@ My playground in K6
 
 ## Prerequisite
 
-1. (**Warning**) Only run in UNIX or Linux
+- (**Warning**) Only available in UNIX or Linux
 
-2. Lua
-  - Version >= 5.4
-  - Json Library: `lua-json`
+- Lua
+  - >= 5.4
+  - JSON Library: `lua-json`
     - [luarocks](https://luarocks.org/modules/neoxic/lua-json)
     - [apt](https://zoomadmin.com/HowToInstall/UbuntuPackage/lua-json)
 
-3. [K6](https://github.com/grafana/k6)
-  - Version >= 0.4
+- [K6](https://github.com/grafana/k6) (>= 0.4)
 
-4. Bash
-  - Version >= 4.0
+- Bash (>= 4.0)
 
-5. ulimit (in UNIX or Linux)
+- Setting `ulimit` (in UNIX or Linux)
 
 ```console
 ulimit -n 655350
@@ -47,7 +45,7 @@ $ ls
 ...
 ```
 
-### File Name Explaination
+### File Name Explanation
 
 File name: `[A]_summary_[B]Pods_[R]30_[D]30s_[P]20_[M]30`
 
@@ -67,9 +65,11 @@ To Calculate the average of Rate(RPS), P90 of API Lantency(ms) and P95 API Lante
 e.g. Directory list in `CalSummary.sh`
 
 ```bash
-# snip...
+snip...
+
 dirs=("CreateTasksWithKey_10Pods") # line 67
-# snip...
+
+snip...
 ```
 
 After that
@@ -139,9 +139,9 @@ Similar to the content in [ConstantEnvs](#constantenvs). Except that the results
 ### Calculation rules
 
 ```plaintext
-AvgRate = Sum(Rate of each file) / Total number of files in the same directory (Total interation number)
+AvgRate = Sum(Rate of each file) / Total number of files in the same directory
 
-AvgP90 = Sum(P90 of each file) / Total number of files in the same directory (Total interation number)
+AvgP90 = Sum(P90 of each file) / Total number of files in the same directory
 
-AvgP95 = Sum(P95 of each file) / Total number of files in the same directory (Total interation number)
+AvgP95 = Sum(P95 of each file) / Total number of files in the same directory
 ```
