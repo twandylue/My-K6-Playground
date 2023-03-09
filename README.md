@@ -4,10 +4,9 @@ My playground in K6
 
 ## Prerequisite
 
-- (**Warning**) Only available in UNIX or Linux
+- (**IMPORTANT**) Only available in UNIX or Linux
 
-- Lua
-  - >= 5.4
+- Lua (>= 5.4)
   - JSON Library: `lua-json`
     - [luarocks](https://luarocks.org/modules/neoxic/lua-json)
     - [apt](https://zoomadmin.com/HowToInstall/UbuntuPackage/lua-json)
