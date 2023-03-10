@@ -1,6 +1,6 @@
 use std::{
     env,
-    path::Path,
+    path::{Path, PathBuf},
     process::{exit, ExitCode},
 };
 
@@ -53,6 +53,7 @@ fn entry() -> Result<(), ()> {
                 eprintln!("ERROR: script file: {script_file} does not exist.");
                 return Err(());
             }
+            let script_file = PathBuf::from(&script_file);
 
             let pod_number = args.next();
             let pod_number = match pod_number {
@@ -63,6 +64,8 @@ fn entry() -> Result<(), ()> {
             };
 
             let executor = Executor::new(&mode, &script_file);
+
+            executor.execute_stress_test(pod_number)?;
         }
         _ => {
             usage(&program);
