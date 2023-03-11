@@ -1,10 +1,9 @@
+use crate::models::env::Env;
 use std::{
     fs,
     path::{Path, PathBuf},
     process::Command,
 };
-
-use crate::models::env::Env;
 
 pub struct Executor<'a> {
     pub mode: String,
@@ -81,16 +80,6 @@ impl<'a> Executor<'a> {
         round: usize,
         pod_number: i32,
     ) -> Result<String, ()> {
-        // let output_filename = format!(
-        //     "{round}_result_{pod_number}Pods_R{rate}_D{duration}_P{preallocatedvus}_M{maxvus}.json",
-        //     rate = env.rate,
-        //     duration = env.duration,
-        //     preallocatedvus = env.preallocatedvus,
-        //     maxvus = env.maxvus
-        // );
-        //
-        // let output_file_path = Path::new(output_folder).join(output_filename);
-
         let summary_report_name = format!(
             "{round}_summary_{pod_number}Pods_R{rate}_D{duration}_P{preallocatedvus}_M{maxvus}.json",
             rate = env.rate,
@@ -132,11 +121,13 @@ mod tests {
             maxvus: 3000,
         };
         let output_folder_path = "results/ConstantPods/GetTaskById_1Pods";
+        let round: usize = 1;
+        let pod_number = 1;
 
         let expected = "k6 run --summary-export results/ConstantPods/GetTaskById_1Pods/1_summary_1Pods_R3000_D30s_P3000_M3000.json ./scripts/GetTaskById.js --env RATE=3000 --env DURATION=30s --env PREALLOCATEDVUS=3000 --env MAXVUS=3000";
 
         // act
-        let actual = exe.gen_cmd(&env, &output_folder_path, 1, 1)?;
+        let actual = exe.gen_cmd(&env, &output_folder_path, round, pod_number)?;
 
         // arrange
         assert_eq!(expected, actual);
