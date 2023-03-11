@@ -7,6 +7,7 @@ use std::{
 use executor::Executor;
 
 mod executor;
+mod models;
 
 fn main() -> ExitCode {
     match entry() {
