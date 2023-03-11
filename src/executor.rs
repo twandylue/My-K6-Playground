@@ -6,16 +6,13 @@ use std::{
 };
 
 pub struct Executor<'a> {
-    pub mode: String,
+    pub mode: &'a str,
     pub file: &'a PathBuf,
 }
 
 impl<'a> Executor<'a> {
-    pub fn new(mode: &str, file: &'a PathBuf) -> Self {
-        Executor {
-            mode: mode.to_string(),
-            file,
-        }
+    pub fn new(mode: &'a str, file: &'a PathBuf) -> Self {
+        Executor { mode, file }
     }
 
     pub fn execute_stress_test(&self, pod_number: i32) -> Result<(), ()> {
@@ -44,7 +41,7 @@ impl<'a> Executor<'a> {
             eprintln!("ERROR: could not deserialize the env file: {env_filename}: {err}")
         })?;
 
-        let output_folder_path = match self.mode.as_str() {
+        let output_folder_path = match self.mode {
             "const_env" => format!("results/ConstantEnvs/{filename}_{pod_number}Pods",),
             "const_pod" => format!("results/ConstantPods/{filename}_{pod_number}Pods",),
             _ => return Err(()),
@@ -59,7 +56,7 @@ impl<'a> Executor<'a> {
 
             println!("{cmd}");
 
-            // TODO: execute
+            // TODO: execute k6 command
             // let output = Command::new(cmd).output().expect("test");
             // let output = output.stdout;
         }
