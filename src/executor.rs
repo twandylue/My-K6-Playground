@@ -56,7 +56,7 @@ impl<'a> Executor<'a> {
         })?;
 
         for i in 0..envs.len() {
-            let cmd = Self::gen_cmd(&self, &envs[i], &output_folder_path, i, pod_number)?;
+            let cmd = Self::gen_cmd(&self, &envs[i], &output_folder_path, i + 1, pod_number)?;
 
             println!("{cmd}");
 
@@ -72,7 +72,7 @@ impl<'a> Executor<'a> {
     /// k6 run --summary-export `summary_export.json` `script_file.json` --env RATE=`rate` --env DURATION=`duration` --env PREALLOCATEDVUS=`vus` --env MAXVUS=`vus`
     /// # Examples
     /// ```
-    /// k6 run --summary-export ../../Results/ConstantPods/CreateTasksWithKey_10Pods/10_summary_10Pods_R3000_D30s_P3000_M3000.json ./CreateTasksWithKey.js --env RATE=3000 --env DURATION=30s --env PREALLOCATEDVUS=3000 --env MAXVUS=3000
+    /// k6 run --summary-export results/ConstantPods/CreateTasksWithKey_1Pods/1_summary_1Pods_R1_D10s_P200_M300.json ./scripts/ConstantPods/CreateTasksWithKey.js --env RATE=1 --env DURATION=10s --env PREALLOCATEDVUS=200 --env MAXVUS=300
     /// ``
     fn gen_cmd(
         &self,
