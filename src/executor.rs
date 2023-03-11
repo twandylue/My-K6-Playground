@@ -56,17 +56,11 @@ impl<'a> Executor<'a> {
         })?;
 
         for i in 0..envs.len() {
-            let cmd = Self::gen_cmd(
-                &envs[i],
-                &self.file.as_path().to_string_lossy(),
-                &output_folder_path,
-                i,
-                pod_number,
-            )?;
+            let cmd = Self::gen_cmd(&self, &envs[i], &output_folder_path, i, pod_number)?;
 
             println!("{cmd}");
 
-            // // TODO: execute
+            // TODO: execute
             // let output = Command::new(cmd).output().expect("test");
             // let output = output.stdout;
         }
@@ -78,12 +72,12 @@ impl<'a> Executor<'a> {
     /// k6 run --summary-export `summary_export.json` `script_file.json` --env RATE=`rate` --env DURATION=`duration` --env PREALLOCATEDVUS=`vus` --env MAXVUS=`vus`
     /// # Examples
     /// ```
-    /// k6 run --summary-export ../../Results/ConstantPods/CreateTasksWithKey_10Pods/10_summary_10Pods_R3000 _D30s_P3000_M3000.json ./CreateTasksWithKey.js --env RATE=3000 --env DURATION=30s --env PREALLOCATEDVUS=3000 --env MAXVUS=3000
+    /// k6 run --summary-export ../../Results/ConstantPods/CreateTasksWithKey_10Pods/10_summary_10Pods_R3000_D30s_P3000_M3000.json ./CreateTasksWithKey.js --env RATE=3000 --env DURATION=30s --env PREALLOCATEDVUS=3000 --env MAXVUS=3000
     /// ``
     fn gen_cmd(
+        &self,
         env: &Env,
-        script_file: &str,
-        output_folder: &str,
+        output_folder_path: &str,
         round: usize,
         pod_number: i32,
     ) -> Result<String, ()> {
@@ -105,10 +99,11 @@ impl<'a> Executor<'a> {
             maxvus = env.maxvus
         );
 
-        let output_summary_path = Path::new(output_folder).join(summary_report_name);
+        let output_summary_path = Path::new(output_folder_path).join(summary_report_name);
 
         let cmd = format!("k6 run --summary-export {output_summary_path} {script_file} --env RATE={rate} --env DURATION={duration} --env PREALLOCATEDVUS={preallocatedvus} --env MAXVUS={maxvus}", 
             output_summary_path = output_summary_path.display(),
+            script_file = &self.file.display(),
             rate = env.rate,
             duration = env.duration,
             preallocatedvus = env.preallocatedvus,
@@ -116,5 +111,36 @@ impl<'a> Executor<'a> {
         );
 
         Ok(cmd)
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::Executor;
+    use crate::models::env::Env;
+    use std::path::PathBuf;
+
+    #[test]
+    fn gen_cmd_ok() -> Result<(), ()> {
+        // arrange
+        let script_file = PathBuf::from("./scripts/GetTaskById.js".to_string());
+        let exe = Executor::new("const_pod", &script_file);
+        let env = Env {
+            rate: 3000,
+            duration: "30s".to_string(),
+            preallocatedvus: 3000,
+            maxvus: 3000,
+        };
+        let output_folder_path = "results/ConstantPods/GetTaskById_1Pods";
+
+        let expected = "k6 run --summary-export results/ConstantPods/GetTaskById_1Pods/1_summary_1Pods_R3000_D30s_P3000_M3000.json ./scripts/GetTaskById.js --env RATE=3000 --env DURATION=30s --env PREALLOCATEDVUS=3000 --env MAXVUS=3000";
+
+        // act
+        let actual = exe.gen_cmd(&env, &output_folder_path, 1, 1)?;
+
+        // arrange
+        assert_eq!(expected, actual);
+
+        Ok(())
     }
 }
